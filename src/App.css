@@ -1,0 +1,372 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #10161d;
+  --bg-grid: #151d26;
+  --panel: #1a222b;
+  --panel-2: #212b35;
+  --text: #f0ece0;
+  --text-dim: #93a0aa;
+  --brass: #c9a06b;
+  --brass-dim: rgba(201, 160, 107, 0.32);
+  --brass-glow: rgba(201, 160, 107, 0.14);
+
+  --celsius: #5fb8b0;
+  --celsius-dim: rgba(95, 184, 176, 0.16);
+  --fahrenheit: #e2914f;
+  --fahrenheit-dim: rgba(226, 145, 79, 0.16);
+  --kelvin: #a184e0;
+  --kelvin-dim: rgba(161, 132, 224, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+body {
+  background-image:
+    repeating-linear-gradient(
+      transparent,
+      transparent 39px,
+      rgba(255, 255, 255, 0.02) 39px,
+      rgba(255, 255, 255, 0.02) 40px
+    );
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 48px 20px 96px;
+}
+
+#root {
+  width: 100%;
+  max-width: 560px;
+}
+
+#root > div {
+  background: var(--panel);
+  border: 1px solid var(--brass-dim);
+  border-radius: 4px;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.4),
+    0 30px 60px -30px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+  position: relative;
+}
+
+#root > div::before,
+#root > div::after {
+  content: '';
+  position: absolute;
+  top: 14px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #e4c896, var(--brass) 60%, #7a5f3a 100%);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+#root > div::before {
+  left: 14px;
+}
+#root > div::after {
+  right: 14px;
+}
+
+.header {
+  padding: 40px 32px 28px;
+  text-align: center;
+  background:
+    radial-gradient(120% 140% at 50% -10%, var(--brass-glow), transparent 60%),
+    var(--panel-2);
+  border-bottom: 1px solid var(--brass-dim);
+}
+
+.titulo {
+  margin: 0;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.titulo::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 2px;
+  margin: 14px auto 0;
+  background: var(--brass);
+  opacity: 0.7;
+}
+
+.header p {
+  margin: 14px 0 0;
+  font-size: 13.5px;
+  color: var(--text-dim);
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.02em;
+}
+
+.coletaTemperatura,
+.escolhaOrigem,
+.escolhaConversor {
+  padding: 28px 32px;
+  border-bottom: 1px solid var(--brass-dim);
+}
+
+.escolhaConversor:last-child,
+.escolhaConversor:has(> div:only-child):empty {
+  border-bottom: none;
+}
+
+.coletaTemperatura h2,
+.escolhaOrigem h2,
+.escolhaConversor h2 {
+  margin: 0 0 16px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+
+.coletaTemperatura form,
+.escolhaOrigem form {
+  margin: 0;
+}
+
+.coletaTemperatura label,
+.escolhaOrigem label {
+  display: block;
+}
+
+#temp {
+  width: 100%;
+  padding: 14px 16px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--brass-dim);
+  border-radius: 3px;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  -moz-appearance: textfield;
+}
+
+#temp::-webkit-outer-spin-button,
+#temp::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#temp::placeholder {
+  color: var(--text-dim);
+}
+
+#temp:hover {
+  border-color: var(--brass);
+}
+
+#temp:focus-visible {
+  border-color: var(--brass);
+  box-shadow: 0 0 0 3px var(--brass-glow);
+}
+
+.escolhaConversor > div {
+  animation: reveal 0.4s ease both;
+}
+
+button {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 13.5px;
+  letter-spacing: 0.02em;
+  padding: 11px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  background: transparent;
+  color: var(--text);
+  border: 1.5px solid var(--brass-dim);
+  transition: all 0.2s ease;
+  margin: 0 10px 10px 0;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button.celsius {
+  border-color: color-mix(in srgb, var(--celsius) 55%, transparent);
+  color: var(--celsius);
+}
+button.celsius:hover {
+  background: var(--celsius-dim);
+  border-color: var(--celsius);
+  box-shadow: 0 4px 16px -8px var(--celsius);
+}
+
+button.fahrenheit {
+  border-color: color-mix(in srgb, var(--fahrenheit) 55%, transparent);
+  color: var(--fahrenheit);
+}
+button.fahrenheit:hover {
+  background: var(--fahrenheit-dim);
+  border-color: var(--fahrenheit);
+  box-shadow: 0 4px 16px -8px var(--fahrenheit);
+}
+
+button.kelvin {
+  border-color: color-mix(in srgb, var(--kelvin) 55%, transparent);
+  color: var(--kelvin);
+}
+button.kelvin:hover {
+  background: var(--kelvin-dim);
+  border-color: var(--kelvin);
+  box-shadow: 0 4px 16px -8px var(--kelvin);
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.escolhaConversor section {
+  margin-top: 24px;
+  padding: 22px 20px;
+  background: var(--bg);
+  border: 1px solid var(--brass-dim);
+  border-radius: 3px;
+  position: relative;
+  animation: reveal 0.45s ease both;
+}
+
+.escolhaConversor section::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(201, 160, 107, 0.15);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.escolhaConversor section h3 {
+  margin: 0 0 14px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+
+.escolhaConversor section p {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: var(--text-dim);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+}
+
+.escolhaConversor section p:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+  padding-top: 6px;
+}
+
+.escolhaConversor section p strong {
+  color: var(--text-dim);
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.escolhaConversor section p:last-child strong {
+  color: var(--text-dim);
+}
+
+.escolhaConversor section p:last-child {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.escolhaConversor section {
+  box-shadow: inset 0 0 40px -20px var(--brass-glow);
+}
+
+
+@media (max-width: 480px) {
+  body {
+    padding: 24px 12px 64px;
+  }
+
+  .header {
+    padding: 32px 20px 22px;
+  }
+
+  .titulo {
+    font-size: 21px;
+  }
+
+  .coletaTemperatura,
+  .escolhaOrigem,
+  .escolhaConversor {
+    padding: 22px 20px;
+  }
+
+  #temp {
+    font-size: 22px;
+  }
+
+  button {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .escolhaConversor section p:last-child {
+    font-size: 21px;
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
