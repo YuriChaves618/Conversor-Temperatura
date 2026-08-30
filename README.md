@@ -1,19 +1,58 @@
-# React + Vite
+# 🌡️ Conversor de Temperatura
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Aplicação React para converter temperaturas entre **Celsius**, **Fahrenheit** e **Kelvin**, com uma interface inspirada em painéis de instrumentos de laboratório.
 
-Currently, two official plugins are available:
+## Como funciona
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. Informe a temperatura desejada.
+2. Escolha a escala de origem.
+3. Escolha a escala de destino.
+4. O resultado aparece automaticamente na tela.
 
-## React Compiler
+## Tecnologias
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- CSS puro (sem frameworks)
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+## Rodando o projeto localmente
 
-## Expanding the Oxlint configuration
+```bash
+# clone o repositório
+git clone https://github.com/seu-usuario/seu-repositorio.git
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+# entre na pasta do projeto
+cd seu-repositorio
+
+# instale as dependências
+npm install
+
+# inicie o servidor de desenvolvimento
+npm run dev
+```
+
+O projeto ficará disponível em `http://localhost:5173`.
+
+## Estrutura do projeto
+
+```
+src/
+├── App.jsx      # Lógica e componentes da aplicação
+├── App.css      # Estilos visuais
+└── main.jsx     # Ponto de entrada
+```
+
+## Fórmulas utilizadas
+
+| De → Para              | Fórmula                     |
+|-------------------------|------------------------------|
+| Kelvin → Celsius        | `K - 273.15`                 |
+| Kelvin → Fahrenheit     | `(K - 273.15) × 1.8 + 32`    |
+| Celsius → Kelvin        | `C + 273.15`                 |
+| Celsius → Fahrenheit    | `C × 1.8 + 32`                |
+| Fahrenheit → Celsius    | `(F - 32) / 1.8`              |
+| Fahrenheit → Kelvin     | `(F + 459.67) × 5/9`          |
+
+## Licença
+
+Este projeto é livre para uso e modificação.
