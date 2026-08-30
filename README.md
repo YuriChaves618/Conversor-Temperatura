@@ -19,7 +19,7 @@ Aplicação React para converter temperaturas entre **Celsius**, **Fahrenheit** 
 
 ```bash
 # clone o repositório
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone https://github.com/YuriChaves618/Conversor-Temperatura.git
 
 # entre na pasta do projeto
 cd seu-repositorio
@@ -31,16 +31,8 @@ npm install
 npm run dev
 ```
 
-O projeto ficará disponível em `http://localhost:5173`.
-
-## Estrutura do projeto
-
-```
-src/
-├── App.jsx      # Lógica e componentes da aplicação
-├── App.css      # Estilos visuais
-└── main.jsx     # Ponto de entrada
-```
+### O projeto ficará disponível em `http://localhost:5173`.
+---
 
 ## Fórmulas utilizadas
 
